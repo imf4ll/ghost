@@ -47,4 +47,6 @@ func Selection(save string, clipboard bool) {
         utils.SaveToClipboard(screenshot)
 
     }
+
+    utils.PlaySound("/opt/goshot/screenshot.wav")
 }

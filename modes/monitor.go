@@ -37,4 +37,6 @@ func Monitor(save string, clipboard bool, monitor int) {
         utils.SaveToClipboard(screenshot)
 
     }
+    
+    utils.PlaySound("/opt/goshot/screenshot.wav")
 }
