@@ -1,5 +1,5 @@
 <div align="center">
-    <img src="./assets/logo.png" width="300" />
+    <img src="./assets/logo.png" width="200" />
     <h3>A simple script to take screenshots using only CLI</h3>
 </div>
 
