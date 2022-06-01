@@ -13,6 +13,7 @@
 | monitor | Take screenshot from only a monitor |
 | save | Save the output to a image file |
 | clipboard | Copy the output to the clipboard |
+| output | Outputs screenshot to stdout encoded as png  |
 
 &nbsp;
 ### Example
@@ -23,6 +24,10 @@ goshot -f -S 'image.png'
 #### Selected area and copy to clipboard
 ```bash
 goshot -s -c
+```
+#### Fullscreen and output to stdout
+```bash
+goshot -f -o
 ```
 
 <br><br>
