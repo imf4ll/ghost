@@ -1,4 +1,7 @@
-<h2 align="center">A simple script to take screenshots using only CLI</h2>
+<div align="center">
+    <img src="./assets/logo.png" width="100%" />
+    <h3>A simple script to take screenshots using only CLI</h3>
+</div>
 
 ## 🚀 Usage:
 **If you want to use the properly builded script, check <a href="#setup">setup</a>**
