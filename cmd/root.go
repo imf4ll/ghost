@@ -14,15 +14,16 @@ var rootCmd = cobra.Command {
         monitor, _ := c.Flags().GetInt("monitor")
         clipboard, _ := c.Flags().GetBool("clipboard")
         save, _ := c.Flags().GetString("save")
+        output, _ := c.Flags().GetBool("output")
 
         if fullscreen {
-           modes.Fullscreen(save, clipboard)
+           modes.Fullscreen(save, clipboard, output)
 
         } else if selection {
-            modes.Selection(save, clipboard)
+            modes.Selection(save, clipboard, output)
 
         } else if monitor != -1 {
-            modes.Monitor(save, clipboard, monitor)
+            modes.Monitor(save, clipboard, monitor, output)
 
         } else {
             c.Help()
@@ -37,6 +38,7 @@ func init() {
     rootCmd.PersistentFlags().BoolP("clipboard", "c", false, "Save output to clipboard")
     rootCmd.PersistentFlags().IntP("monitor", "m", -1, "Monitor mode")
     rootCmd.PersistentFlags().StringP("save", "S", "", "Save output to file")
+    rootCmd.PersistentFlags().BoolP("output", "o", false, "Outputs screenshot to stdout")
 }
 
 func Execute() {

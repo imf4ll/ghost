@@ -8,7 +8,7 @@ import (
     "github.com/go-vgo/robotgo"
 )
 
-func Monitor(save string, clipboard bool, monitor int) {
+func Monitor(save string, clipboard bool, monitor int, output bool) {
     var screenshot image.Image
 
     monitors := utils.GetDisplays()
@@ -36,6 +36,10 @@ func Monitor(save string, clipboard bool, monitor int) {
     } else {
         utils.SaveToClipboard(screenshot)
 
+    }
+
+    if output {
+        utils.OutputToStdout(screenshot)
     }
     
     utils.PlaySound("/opt/goshot/screenshot.wav")

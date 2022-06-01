@@ -5,10 +5,11 @@ import (
     "log"
 
     "github.com/z3oxs/goshot/utils"
+
     "github.com/go-vgo/robotgo"
 )
 
-func Selection(save string, clipboard bool) {
+func Selection(save string, clipboard, output bool) {
     var x1, x2, y1, y2 int
     var screenshot image.Image
 
@@ -46,6 +47,10 @@ func Selection(save string, clipboard bool) {
     } else {
         utils.SaveToClipboard(screenshot)
 
+    }
+
+    if output {
+        utils.OutputToStdout(screenshot)
     }
 
     utils.PlaySound("/opt/goshot/screenshot.wav")
