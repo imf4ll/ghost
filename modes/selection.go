@@ -2,14 +2,12 @@ package modes
 
 import (
     "image"
-    "log"
 
     "github.com/z3oxs/goshot/utils"
-
     "github.com/go-vgo/robotgo"
 )
 
-func Selection(save string, clipboard, output bool) {
+func Selection(save string, clipboard, output, upload bool) {
     var x1, x2, y1, y2 int
     var screenshot image.Image
 
@@ -35,23 +33,25 @@ func Selection(save string, clipboard, output bool) {
 
     }
 
+    utils.PlaySound("/opt/goshot/screenshot.wav")
+
     if clipboard {
         utils.SaveToClipboard(screenshot)
     
-    } else if save != "" {
-        if err := robotgo.Save(screenshot, save); err != nil {
-            log.Fatal(err)
+    }
 
-        }
-    
-    } else {
-        utils.SaveToClipboard(screenshot)
+    if save != "" {
+        robotgo.Save(screenshot, save)
 
     }
 
     if output {
         utils.OutputToStdout(screenshot)
+
     }
 
-    utils.PlaySound("/opt/goshot/screenshot.wav")
+    if upload {
+        utils.UploadImage(screenshot)
+
+    }
 }

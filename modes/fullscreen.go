@@ -5,23 +5,28 @@ import (
     "github.com/z3oxs/goshot/utils"
 )
 
-func Fullscreen(save string, clipboard, output bool) {
+func Fullscreen(save string, clipboard, output, upload bool) {
     screenshot := robotgo.CaptureImg()
+
+    utils.PlaySound("/opt/goshot/screenshot.wav")
 
     if clipboard {
         utils.SaveToClipboard(screenshot)
     
-    } else if save != "" {
-        robotgo.Save(screenshot, save)
+    }
 
-    } else {
-        utils.SaveToClipboard(screenshot)
+    if save != "" {
+        robotgo.Save(screenshot, save)
 
     }
 
     if output {
         utils.OutputToStdout(screenshot)
+
     }
-    
-    utils.PlaySound("/opt/goshot/screenshot.wav")
+
+    if upload {
+        utils.UploadImage(screenshot)
+
+    }
 }
