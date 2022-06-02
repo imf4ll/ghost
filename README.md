@@ -3,6 +3,7 @@
     <h3>A simple script to take screenshots using only CLI</h3>
 </div>
 
+&nbsp;
 ## 🚀 Usage:
 **If you want to use the properly builded script, check <a href="#setup">setup</a>**
 
@@ -14,6 +15,7 @@
 | save | Save the output to a image file |
 | clipboard | Copy the output to the clipboard |
 | output | Outputs screenshot to stdout encoded as png  |
+| upload | Upload the screenshot to AnonFiles |
 
 &nbsp;
 ### Example
