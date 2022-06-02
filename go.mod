@@ -3,13 +3,13 @@ module github.com/z3oxs/goshot
 go 1.17
 
 require (
+	github.com/faiface/beep v1.1.0
 	github.com/go-vgo/robotgo v0.100.10
 	github.com/spf13/cobra v1.4.0
 )
 
 require (
 	github.com/StackExchange/wmi v1.2.1 // indirect
-	github.com/faiface/beep v1.1.0 // indirect
 	github.com/go-ole/go-ole v1.2.6 // indirect
 	github.com/hajimehoshi/oto v0.7.1 // indirect
 	github.com/inconshreveable/mousetrap v1.0.0 // indirect

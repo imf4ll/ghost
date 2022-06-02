@@ -4,6 +4,7 @@ import (
     "os"
     "log"
     "time"
+    "runtime"
 
     "github.com/faiface/beep"
     "github.com/faiface/beep/wav"
@@ -11,6 +12,8 @@ import (
 )
 
 func PlaySound(sound string) {
+    if runtime.GOOS == "Windows" { return }
+
     done := make(chan bool)
 
     file, err := os.Open(sound)
