@@ -31,7 +31,7 @@ var rootCmd = cobra.Command {
             modes.Selection(save, clipboard, output, upload)
 
         } else if display != -1 {
-            modes.Monitor(save, clipboard, output, upload, display)
+            modes.Display(save, clipboard, output, upload, display)
 
         } else {
             c.Help()
