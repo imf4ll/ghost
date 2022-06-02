@@ -8,7 +8,7 @@ import (
     "github.com/go-vgo/robotgo"
 )
 
-func Monitor(save string, clipboard, output, upload bool, display int) {
+func Display(save string, clipboard, output, upload bool, display int) {
     var screenshot image.Image
 
     displays := utils.GetDisplays()
