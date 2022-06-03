@@ -5,7 +5,7 @@ import (
 
     "fyne.io/fyne/v2"
     "fyne.io/fyne/v2/canvas"
-    "github.com/z3oxs/goshot/utils"
+    "github.com/z3oxs/ghost/utils"
 )
 
 func KeyEventsMulti (

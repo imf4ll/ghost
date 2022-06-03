@@ -2,7 +2,7 @@ package modes
 
 import (
     "github.com/go-vgo/robotgo"
-    "github.com/z3oxs/goshot/utils"
+    "github.com/z3oxs/ghost/utils"
 )
 
 func Fullscreen(save string, clipboard, output, upload bool) {

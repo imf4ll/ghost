@@ -4,7 +4,7 @@ import (
     "image"
     "log"
 
-    "github.com/z3oxs/goshot/utils"
+    "github.com/z3oxs/ghost/utils"
     "github.com/go-vgo/robotgo"
 )
 

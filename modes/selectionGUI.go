@@ -8,8 +8,8 @@ import (
     "fyne.io/fyne/v2/app"
     "fyne.io/fyne/v2/canvas"
     "github.com/go-vgo/robotgo"
-    "github.com/z3oxs/goshot/utils"
-    "github.com/z3oxs/goshot/chans"
+    "github.com/z3oxs/ghost/chans"
+    "github.com/z3oxs/ghost/utils"
 )
 
 func SelectionGUI(save string, clipboard, output, upload bool) {

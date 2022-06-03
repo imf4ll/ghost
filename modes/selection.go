@@ -4,7 +4,7 @@ import (
     "image"
 
     "github.com/go-vgo/robotgo"
-    "github.com/z3oxs/goshot/utils"
+    "github.com/z3oxs/ghost/utils"
 )
 
 func Selection(save string, clipboard, output, upload bool) {

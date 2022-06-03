@@ -1,4 +1,4 @@
-module github.com/z3oxs/goshot
+module github.com/z3oxs/ghost
 
 go 1.17
 

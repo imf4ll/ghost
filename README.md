@@ -22,23 +22,26 @@
 ### Example
 #### Fullscreen and save to a png file inside your working folder
 ```bash
-goshot -f -S 'image.png'
+ghost -f -S 'image.png'
 ```
 #### Selected area and copy to clipboard
 ```bash
-goshot -s -c
+ghost -s -c
 ```
 #### Fullscreen and output to stdout
 ```bash
-goshot -f -o
+ghost -f -o
 ```
 
 <br><br>
 <a name="setup"></a>
 ## 🔧 Setup:
 ### Clone this repository:<br>
-`git clone https://github.com/z3oxs/goshot` or Download ZIP and unzip;<br><br>
+`git clone https://github.com/z3oxs/ghost` or Download ZIP and unzip;<br><br>
 ### Move to repository:<br>
-`cd goshot`<br><br>
+`cd ghost`<br><br>
 ### Install (Will need 'make'):<br>
-`sudo make install`<br><br>
+#### Windows:<br>
+`sudo make install-win`<br><br>
+#### Linux:<br>
+`sudo make install-linux`<br><br>

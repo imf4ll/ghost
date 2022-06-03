@@ -2,14 +2,15 @@ package cmd
 
 import (
     "log"
+    "fmt"
 
     "github.com/spf13/cobra"
-    "github.com/z3oxs/goshot/modes"
+    "github.com/z3oxs/ghost/modes"
 )
 
 var rootCmd = cobra.Command {
     Short: "Simple tool to take screenshots",
-    Use: "goshot",
+    Use: "ghost",
     Run: func(c *cobra.Command, args []string) {
         fullscreen, _ := c.Flags().GetBool("fullscreen")
         selection, _ := c.Flags().GetBool("selection")
@@ -19,6 +20,12 @@ var rootCmd = cobra.Command {
         output, _ := c.Flags().GetBool("output")
         upload, _ := c.Flags().GetBool("upload")
         selectiongui, _ := c.Flags().GetBool("selectiongui")
+        version, _ := c.Flags().GetBool("version")
+
+        if version {
+            fmt.Println("v1.0.4 - Stable")
+
+        }
 
         if (!clipboard && save == "" && !output && !upload) {
             log.Fatalln("You need to specify at least a save method, check 'goshot --help'.")
@@ -53,6 +60,7 @@ func init() {
     rootCmd.PersistentFlags().BoolP("output", "o", false, "Outputs screenshot to stdout")
     rootCmd.PersistentFlags().BoolP("upload", "u", false, "Upload the screenshot to AnonFiles")
     rootCmd.PersistentFlags().BoolP("selectiongui", "g", false, "Selection with GUI mode.")
+    rootCmd.PersistentFlags().BoolP("version", "v", false, "Show version")
 
 }
 
