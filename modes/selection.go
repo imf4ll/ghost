@@ -3,8 +3,8 @@ package modes
 import (
     "image"
 
-    "github.com/z3oxs/goshot/utils"
     "github.com/go-vgo/robotgo"
+    "github.com/z3oxs/goshot/utils"
 )
 
 func Selection(save string, clipboard, output, upload bool) {
@@ -23,7 +23,7 @@ func Selection(save string, clipboard, output, upload bool) {
     if mouseLastClick {
         x2, y2 = robotgo.GetMousePos()
 
-    }
+    } 
 
     if x1 < x2 {
         screenshot = robotgo.CaptureImg(x1, y1, x2 - x1, y2 - y1) 
@@ -37,7 +37,7 @@ func Selection(save string, clipboard, output, upload bool) {
 
     if clipboard {
         utils.SaveToClipboard(screenshot)
-    
+
     }
 
     if save != "" {
