@@ -8,7 +8,7 @@ import (
 func Fullscreen(save string, clipboard, output, upload bool) {
     screenshot := robotgo.CaptureImg()
 
-    utils.PlaySound("/opt/goshot/screenshot.wav")
+    utils.PlaySound("/opt/ghost/screenshot.wav")
 
     if clipboard {
         utils.SaveToClipboard(screenshot)

@@ -112,7 +112,7 @@ func SelectionGUI(save string, clipboard, output, upload bool) {
             break
         }
 
-        utils.PlaySound("/opt/goshot/screenshot.wav")
+        utils.PlaySound("/opt/ghost/screenshot.wav")
 
         if clipboard {
             utils.SaveToClipboard(screenshot)

@@ -3,6 +3,7 @@ package cmd
 import (
     "log"
     "fmt"
+    "os"
 
     "github.com/spf13/cobra"
     "github.com/z3oxs/ghost/modes"
@@ -25,10 +26,11 @@ var rootCmd = cobra.Command {
         if version {
             fmt.Println("v1.0.4 - Stable")
 
+            os.Exit(3)
         }
 
         if (!clipboard && save == "" && !output && !upload) {
-            log.Fatalln("You need to specify at least a save method, check 'goshot --help'.")
+            log.Fatalln("You need to specify at least a save method, check 'ghost --help'.")
 
         }
 

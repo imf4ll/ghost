@@ -27,7 +27,7 @@ func Display(save string, clipboard, output, upload bool, display int) {
         displaySelected.Height,
     )
 
-    utils.PlaySound("/opt/goshot/screenshot.wav")
+    utils.PlaySound("/opt/ghost/screenshot.wav")
 
     if clipboard {
         utils.SaveToClipboard(screenshot)
