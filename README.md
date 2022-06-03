@@ -1,6 +1,6 @@
 <div align="center">
     <img src="./assets/logo.png" width="150" />
-    <h3>A simple script to take screenshots using only CLI</h3>
+    <h3>A simple script to take screenshots using your terminal</h3>
 </div>
 
 &nbsp;
@@ -9,12 +9,13 @@
 
 | Command    |     Description    |
 | ------------- | ------------------ |
-| fullscreen |  Take fullscreen shot (include all monitors)  |
+| fullscreen |  Take fullscreen shot (include all monitors) |
 | selection | Take screenshot from a selected area |
-| monitor | Take screenshot from only a monitor |
+| selectiongui | Take screenshot from a selected area freezed and support multiple displays |
+| display | Take screenshot from only a display |
 | save | Save the output to a image file |
 | clipboard | Copy the output to the clipboard |
-| output | Outputs screenshot to stdout encoded as png  |
+| output | Outputs screenshot to stdout encoded as png |
 | upload | Upload the screenshot to AnonFiles |
 
 &nbsp;
