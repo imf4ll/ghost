@@ -12,7 +12,7 @@ import (
 )
 
 func PlaySound(sound string) {
-    if runtime.GOOS == "Windows" { return }
+    if runtime.GOOS == "windows" { return }
 
     done := make(chan bool)
 
