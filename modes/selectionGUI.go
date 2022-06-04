@@ -12,9 +12,8 @@ import (
     "github.com/z3oxs/ghost/utils"
 )
 
-func SelectionGUI(save string, clipboard, output, upload bool) {
+func SelectionGUI(save, format string, clipboard, output, upload bool) {
     var x1, x2, y1, y2 int
-    var x int
     var selectedDisplay int
     var multipleDisplay bool
     var screenshot image.Image
@@ -30,7 +29,6 @@ func SelectionGUI(save string, clipboard, output, upload bool) {
     window.SetFullScreen(true)
 
     displays := utils.GetDisplays()
-    x = displays[0].Width
 
     if len(displays) > 0 {
         multipleDisplay = true
@@ -84,10 +82,6 @@ func SelectionGUI(save string, clipboard, output, upload bool) {
             if mouseFirstClick {
                 x1, y1 = robotgo.GetMousePos()
 
-                if (x < x1) {
-                    continue
-
-                }
             }
 
             mouseLastClick := robotgo.AddMouse("left")
@@ -95,10 +89,6 @@ func SelectionGUI(save string, clipboard, output, upload bool) {
             if mouseLastClick {
                 x2, y2 = robotgo.GetMousePos()
 
-                if (x < x2) {
-                    continue
-
-                }
             } 
 
             if x1 < x2 {
@@ -125,12 +115,12 @@ func SelectionGUI(save string, clipboard, output, upload bool) {
         }
 
         if output {
-            utils.OutputToStdout(screenshot)
+            utils.OutputToStdout(screenshot, format)
 
         }
 
         if upload {
-            utils.UploadImage(screenshot)
+            utils.UploadImage(screenshot, format)
 
         }
 
