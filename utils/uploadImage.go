@@ -2,18 +2,17 @@ package utils
 
 import (
     "log"
-    "os"
     "net/http"
     "io/ioutil"
     "io"
     "mime/multipart"
     "bytes"
     "image"
+    "image/png"
+    "image/jpeg"
     "encoding/json"
     "errors"
     "fmt"
-
-    "github.com/go-vgo/robotgo"
 )
 
 type Response struct {
@@ -36,15 +35,31 @@ type Response struct {
     } `json:"data"`
 }
 
-func UploadImage(screenshot image.Image) {
+func UploadImage(screenshot image.Image, format string) {
     var response Response
-    var path string = "/tmp/screenshot.png"
+    var image = new(bytes.Buffer)
 
     fmt.Printf("Uploading...\n\n")
 
-    robotgo.Save(screenshot, path)
+    switch format {
+        case "png":
+            err := png.Encode(image, screenshot)
+            if err != nil {
+                log.Fatal(err)
 
-    contentType, body, err := createFormFile(path)
+            }
+
+        case "jpg":
+            err := jpeg.Encode(image, screenshot, &jpeg.Options {
+                Quality: 100,
+            })
+            if err != nil {
+                log.Fatal(err)
+
+            }
+    }
+
+    contentType, body, err := createForm(image, format)
     if err != nil {
         log.Fatal(err)
 
@@ -71,19 +86,13 @@ func UploadImage(screenshot image.Image) {
     )
 }
 
-func createFormFile(file string) (string, io.Reader, error) {
+func createForm(image io.Reader, format string) (string, io.Reader, error) {
     body := new(bytes.Buffer)
-
-    image, err := os.Open(file)
-    if err != nil {
-        return "", nil, errors.New(err.Error())
-
-    }
 
     m := multipart.NewWriter(body)
     defer m.Close()
 
-    part, err := m.CreateFormFile("file", file)
+    part, err := m.CreateFormFile("file", fmt.Sprintf("screenshot.%s", format))
     if err != nil {
         return "", nil, errors.New(err.Error())
 
