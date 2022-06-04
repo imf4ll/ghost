@@ -1,59 +1,40 @@
 package utils
 
+/*
+#cgo CFLAGS: -Wall
+#cgo LDFLAGS: -lXrandr -lX11
+
+#include "../cgo/getDisplays.c"
+*/
+import "C"
+
 import (
-    "os/exec"
-    "strconv"
-    "strings"
-    "log"
+    "unsafe"
 )
 
 type Display struct {
-    Name string
-    Width int
-    Height int
     X int
     Y int
+    Width int
+    Height int
 }
 
 func GetDisplays() []Display {
-    var displays []Display
-    var displaysSizes []string
+    var validDisplays []Display
 
-    output, err := exec.Command("bash", "-c", "xrandr | grep ' connected'").Output()
-    if err != nil {
-        log.Fatal(err)
+    displays := (*[1 << 10]C.struct_DisplayInfo)(unsafe.Pointer(C.getDisplays()))[0:10]
 
-    }
-
-    displaysInformation := strings.Split(string(output), "\n")
-    displaysInformation = displaysInformation[:len(displaysInformation) - 1]
-
-    for _, i := range displaysInformation {
-        displayInfo := strings.Split(i, " ")
-
-        if displayInfo[2] != "primary" {
-            displaysSizes = strings.Split(displayInfo[2], "+")
-        
-        } else {
-            displaysSizes = strings.Split(displayInfo[3], "+")
+    for _, i := range displays {
+        if (i.w != 0 && i.h != 0) {
+            validDisplays = append(validDisplays, Display {
+                X: int(i.x),
+                Y: int(i.y),
+                Width: int(i.w),
+                Height: int(i.h),
+            })
 
         }
-
-        monitorResolution := strings.Split(displaysSizes[0], "x")
-
-        width, _ := strconv.Atoi(monitorResolution[0])
-        height, _ := strconv.Atoi(monitorResolution[1])
-        x, _ := strconv.Atoi(displaysSizes[1])
-        y, _ := strconv.Atoi(displaysSizes[2])
-
-        displays = append(displays, Display {
-            Name: displayInfo[0],
-            Width: width,
-            Height: height,
-            X: x,
-            Y: y,
-        })
     }
 
-    return displays
+    return validDisplays
 }
