@@ -22,9 +22,10 @@ var rootCmd = cobra.Command {
         upload, _ := c.Flags().GetBool("upload")
         selectiongui, _ := c.Flags().GetBool("selectiongui")
         version, _ := c.Flags().GetBool("version")
+        format, _ := c.Flags().GetString("format")
 
         if version {
-            fmt.Println("v1.0.4 - Stable")
+            fmt.Println("v1.0.5 - Stable")
 
             os.Exit(3)
         }
@@ -35,16 +36,16 @@ var rootCmd = cobra.Command {
         }
 
         if fullscreen {
-           modes.Fullscreen(save, clipboard, output, upload)
+           modes.Fullscreen(save, format, clipboard, output, upload)
 
         } else if selection {
-            modes.Selection(save, clipboard, output, upload)
+            modes.Selection(save, format, clipboard, output, upload)
 
         } else if selectiongui {
-            modes.SelectionGUI(save, clipboard, output, upload)
+            modes.SelectionGUI(save, format, clipboard, output, upload)
 
         } else if display != -1 {
-            modes.Display(save, clipboard, output, upload, display)
+            modes.Display(save, format, clipboard, output, upload, display)
 
         } else {
             c.Help()
@@ -63,6 +64,7 @@ func init() {
     rootCmd.PersistentFlags().BoolP("upload", "u", false, "Upload the screenshot to AnonFiles")
     rootCmd.PersistentFlags().BoolP("selectiongui", "g", false, "Selection with GUI mode.")
     rootCmd.PersistentFlags().BoolP("version", "v", false, "Show version")
+    rootCmd.PersistentFlags().StringP("format", "F", "png", "Output format (png, jpg)")
 
 }
 
