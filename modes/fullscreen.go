@@ -5,7 +5,7 @@ import (
     "github.com/z3oxs/ghost/utils"
 )
 
-func Fullscreen(save string, clipboard, output, upload bool) {
+func Fullscreen(save, format string, clipboard, output, upload bool) {
     screenshot := robotgo.CaptureImg()
 
     utils.PlaySound("/opt/ghost/screenshot.wav")
@@ -21,12 +21,12 @@ func Fullscreen(save string, clipboard, output, upload bool) {
     }
 
     if output {
-        utils.OutputToStdout(screenshot)
+        utils.OutputToStdout(screenshot, format)
 
     }
 
     if upload {
-        utils.UploadImage(screenshot)
+        utils.UploadImage(screenshot, format)
 
     }
 }

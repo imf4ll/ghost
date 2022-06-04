@@ -7,7 +7,7 @@ import (
     "github.com/z3oxs/ghost/utils"
 )
 
-func Selection(save string, clipboard, output, upload bool) {
+func Selection(save, format string, clipboard, output, upload bool) {
     var x1, x2, y1, y2 int
     var screenshot image.Image
 
@@ -46,12 +46,12 @@ func Selection(save string, clipboard, output, upload bool) {
     }
 
     if output {
-        utils.OutputToStdout(screenshot)
+        utils.OutputToStdout(screenshot, format)
 
     }
 
     if upload {
-        utils.UploadImage(screenshot)
+        utils.UploadImage(screenshot, format)
 
     }
 }

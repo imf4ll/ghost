@@ -8,7 +8,7 @@ import (
     "github.com/go-vgo/robotgo"
 )
 
-func Display(save string, clipboard, output, upload bool, display int) {
+func Display(save, format string, clipboard, output, upload bool, display int) {
     var screenshot image.Image
 
     displays := utils.GetDisplays()
@@ -20,7 +20,7 @@ func Display(save string, clipboard, output, upload bool, display int) {
 
     displaySelected := displays[display]
 
-    screenshot = robotgo.CaptureImg(
+    screenshot = robotgo.CaptureImg (
         displaySelected.X,
         displaySelected.Y,
         displaySelected.Width,
@@ -40,12 +40,12 @@ func Display(save string, clipboard, output, upload bool, display int) {
     }
 
     if output {
-        utils.OutputToStdout(screenshot)
+        utils.OutputToStdout(screenshot, format)
 
     }
 
     if upload {
-        utils.UploadImage(screenshot)
+        utils.UploadImage(screenshot, format)
 
     }
 }
