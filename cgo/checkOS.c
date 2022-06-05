@@ -1,5 +1,5 @@
-#if defined (_WIN32)
-    #define WINDOWS 
+#if defined (__WIN32)
+    #define WINDOWS
 #endif
 
 #if defined (__linux__) || defined (__unix__)
