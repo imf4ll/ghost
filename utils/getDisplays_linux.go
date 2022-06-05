@@ -1,5 +1,7 @@
 package utils
 
+// go:build linux
+
 /*
 #cgo CFLAGS: -Wall
 #cgo LDFLAGS: -lXrandr -lX11
@@ -8,9 +10,7 @@ package utils
 */
 import "C"
 
-import (
-    "unsafe"
-)
+import "unsafe"
 
 type Display struct {
     X int
