@@ -1,7 +1,5 @@
 package utils
 
-// go:build linux
-
 /*
 #cgo CFLAGS: -Wall
 #cgo LDFLAGS: -lXrandr -lX11
@@ -9,7 +7,6 @@ package utils
 #include "../cgo/getDisplays.c"
 */
 import "C"
-
 import "unsafe"
 
 type Display struct {
