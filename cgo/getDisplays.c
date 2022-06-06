@@ -1,21 +1,21 @@
 #include "checkOS.c"
 #include <stdio.h>
 
+struct DisplayInfo {
+    int x;
+    int y;
+    int w;
+    int h;
+};
+
+static struct DisplayInfo displayInfos[10];
+
 #if defined (UNIX)
     #include <X11/Xlib.h>
     #include <X11/extensions/Xrandr.h>
     #include <X11/extensions/randr.h>
 
-    struct DisplayInfo {
-        int x;
-        int y;
-        int w;
-        int h;
-    };
-
     struct DisplayInfo * getDisplays() {
-        static struct DisplayInfo displayInfos[10];
-
         Display * dpy = XOpenDisplay(NULL);
         XRRScreenResources * screen = XRRGetScreenResources(dpy, DefaultRootWindow(dpy));
         XRRCrtcInfo * crtcInfo;
@@ -48,16 +48,7 @@
 
 #if defined (WINDOWS)
     #include <winuser.h>
-    #include <stdio.h>
 
-    struct DisplayInfo {
-        int x;
-        int y;
-        int w;
-        int h;
-    };
-
-    static struct DisplayInfo displayInfos[10];
     int turns = 0;
 
     BOOL CALLBACK MonitorEnum(HMONITOR hMon, HDC hdc, LPRECT lprc, LPARAM dwData) {
