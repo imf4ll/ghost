@@ -47,5 +47,42 @@
 #endif
 
 #if defined (WINDOWS)
+    #include <winuser.h>
+    #include <stdio.h>
 
+    struct DisplayInfo {
+        int x;
+        int y;
+        int w;
+        int h;
+    };
+
+    static struct DisplayInfo displayInfos[10];
+    int turns = 0;
+
+    BOOL CALLBACK MonitorEnum(HMONITOR hMon, HDC hdc, LPRECT lprc, LPARAM dwData) {
+        MONITORINFO info;
+        
+        info.cbSize = sizeof(info);
+        
+        if (GetMonitorInfo(hMon, &info)) {
+            struct DisplayInfo displayInfo;
+            
+            displayInfo.x = info.rcMonitor.left;
+            displayInfo.y = info.rcMonitor.top;
+            displayInfo.w = info.rcMonitor.right;
+            displayInfo.h = info.rcMonitor.bottom;
+            
+            displayInfos[turns] = displayInfo;
+            turns += 1;
+        }
+        
+        return TRUE;
+    }
+
+    struct DisplayInfo * getDisplays() {
+        EnumDisplayMonitors(NULL, NULL, MonitorEnum, 0);
+        
+        return displayInfos;
+    }
 #endif
