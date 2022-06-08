@@ -18,7 +18,6 @@
 | output | Outputs screenshot to stdout encoded as png |
 | upload | Upload the screenshot to AnonFiles |
 | version | Show version |
-| format | Output format (png, jpg) |
 
 &nbsp;
 ### Example
