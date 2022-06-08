@@ -9,7 +9,6 @@ import (
     "bytes"
     "image"
     "image/png"
-    "image/jpeg"
     "encoding/json"
     "errors"
     "fmt"
@@ -35,31 +34,19 @@ type Response struct {
     } `json:"data"`
 }
 
-func UploadImage(screenshot image.Image, format string) {
+func UploadImage(screenshot image.Image) {
     var response Response
     var image = new(bytes.Buffer)
 
     fmt.Printf("Uploading...\n\n")
 
-    switch format {
-        case "png":
-            err := png.Encode(image, screenshot)
-            if err != nil {
-                log.Fatal(err)
+    err := png.Encode(image, screenshot)
+    if err != nil {
+        log.Fatal(err)
 
-            }
-
-        case "jpg":
-            err := jpeg.Encode(image, screenshot, &jpeg.Options {
-                Quality: 100,
-            })
-            if err != nil {
-                log.Fatal(err)
-
-            }
     }
 
-    contentType, body, err := createForm(image, format)
+    contentType, body, err := createForm(image)
     if err != nil {
         log.Fatal(err)
 
@@ -86,13 +73,13 @@ func UploadImage(screenshot image.Image, format string) {
     )
 }
 
-func createForm(image io.Reader, format string) (string, io.Reader, error) {
+func createForm(image io.Reader) (string, io.Reader, error) {
     body := new(bytes.Buffer)
 
     m := multipart.NewWriter(body)
     defer m.Close()
 
-    part, err := m.CreateFormFile("file", fmt.Sprintf("screenshot.%s", format))
+    part, err := m.CreateFormFile("file", "screenshot.png")
     if err != nil {
         return "", nil, errors.New(err.Error())
 
