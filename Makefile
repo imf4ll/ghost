@@ -7,10 +7,11 @@ uninstall-linux:
 	rm -rf ~/go/bin/ghost
 	rm -rf /opt/ghost/
 
-# I can't test this on Windows, if you want to contribute,
-# do that and make a pull request :)
 install-win:
+	mkdir ${HOME}\\AppData\\Roaming\\ghost
+	cp ./sounds/* ${HOME}\\AppData\\Roaming\\ghost\\
 	go build
+	echo "Move the builded binary for any location you want!"
 
 uninstall-win:
-	rm ghost
+	rmdir ${HOME}\\AppData\\Roaming\\ghost
