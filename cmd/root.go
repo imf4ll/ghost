@@ -4,6 +4,7 @@ import (
     "log"
     "fmt"
     "os"
+    "runtime"
 
     "github.com/spf13/cobra"
     "github.com/z3oxs/ghost/modes"
@@ -25,7 +26,7 @@ var rootCmd = cobra.Command {
         format, _ := c.Flags().GetString("format")
 
         if version {
-            fmt.Println("v1.0.6 - Stable")
+            fmt.Println("v1.0.7 - Stable")
 
             os.Exit(3)
         }
@@ -55,17 +56,24 @@ var rootCmd = cobra.Command {
 }
 
 func init() {
+    var save string
+
+    switch runtime.GOOS {
+        case "linux": save = "/tmp/screenshot.png"
+        case "windows": save = fmt.Sprintf("%s\\AppData\\Local\\Temp\\screenshot.png", os.Getenv("HOME"))
+        case "darwin": panic("Darwin not yet implemented.")
+    }
+
     rootCmd.PersistentFlags().BoolP("fullscreen", "f", false, "Fullscreen mode")
     rootCmd.PersistentFlags().BoolP("selection", "s", false, "Selection mode")
     rootCmd.PersistentFlags().BoolP("clipboard", "c", false, "Save output to clipboard")
     rootCmd.PersistentFlags().IntP("display", "d", -1, "Display mode")
-    rootCmd.PersistentFlags().StringP("save", "S", "", "Save output to file")
+    rootCmd.PersistentFlags().StringP("save", "S", save, "Save output to file")
     rootCmd.PersistentFlags().BoolP("output", "o", false, "Outputs screenshot to stdout")
     rootCmd.PersistentFlags().BoolP("upload", "u", false, "Upload the screenshot to AnonFiles")
     rootCmd.PersistentFlags().BoolP("selectiongui", "g", false, "Selection with GUI mode.")
     rootCmd.PersistentFlags().BoolP("version", "v", false, "Show version")
     rootCmd.PersistentFlags().StringP("format", "F", "png", "Output format (png, jpg)")
-
 }
 
 func Execute() {

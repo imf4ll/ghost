@@ -36,6 +36,13 @@ ghost -f -o
 ```
 
 <br><br>
+## ❌ Troubleshooting:
+- If you're facing any "cc1.exe" error including "64-bit not implemented" (Windows):
+    - Download [mingw-w64](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/seh/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z)
+    - Extract and copy "mingw64" to "C:\"
+    - Define or create "PATH" enviroment variable containing "C:\\mingw64\\bin\\"
+
+<br><br>
 <a name="setup"></a>
 ## 🔧 Setup:
 ### Clone this repository:<br>
