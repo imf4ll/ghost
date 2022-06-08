@@ -1,16 +1,12 @@
 package modes
 
 import (
-    "image"
     "log"
 
     "github.com/z3oxs/ghost/utils"
-    "github.com/go-vgo/robotgo"
 )
 
 func Display(save, format string, clipboard, output, upload bool, display int) {
-    var screenshot image.Image
-
     displays := utils.GetDisplays()
 
     if display > len(displays) {
@@ -20,23 +16,24 @@ func Display(save, format string, clipboard, output, upload bool, display int) {
 
     displaySelected := displays[display]
 
-    screenshot = robotgo.CaptureImg (
+    screenshot := utils.CaptureRect (
         displaySelected.X,
         displaySelected.Y,
         displaySelected.Width,
         displaySelected.Height,
+        save,
     )
 
-    utils.PlaySound("/opt/ghost/screenshot.wav")
+    utils.PlaySound("screenshot.wav")
+
+    if utils.CheckSave(save) {
+       utils.SaveImage(screenshot, save) 
+
+    }
 
     if clipboard {
         utils.SaveToClipboard(screenshot)
     
-    }
-
-    if save != "" {
-        robotgo.Save(screenshot, save)
-
     }
 
     if output {

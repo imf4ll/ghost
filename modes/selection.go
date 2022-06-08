@@ -9,7 +9,7 @@ import (
 
 func Selection(save, format string, clipboard, output, upload bool) {
     var x1, x2, y1, y2 int
-    var screenshot image.Image
+    var screenshot image.Image 
 
     mouseFirstClick := robotgo.AddMouse("left")
 
@@ -26,22 +26,34 @@ func Selection(save, format string, clipboard, output, upload bool) {
     } 
 
     if x1 < x2 {
-        screenshot = robotgo.CaptureImg(x1, y1, x2 - x1, y2 - y1) 
+        screenshot = utils.CaptureRect (
+            x1,
+            y1,
+            x2 - x1,
+            y2 - y1,
+            save,
+        )
 
     } else {
-        screenshot = robotgo.CaptureImg(x2, y2, x1 - x2, y1 - y2)
+        screenshot = utils.CaptureRect (
+            x2,
+            y2,
+            x1 - x2,
+            y1 - y2,
+            save,
+        )
 
     }
 
-    utils.PlaySound("/opt/ghost/screenshot.wav")
+    utils.PlaySound("screenshot.wav")
+
+    if utils.CheckSave(save) {
+       utils.SaveImage(screenshot, save)
+
+    }
 
     if clipboard {
         utils.SaveToClipboard(screenshot)
-
-    }
-
-    if save != "" {
-        robotgo.Save(screenshot, save)
 
     }
 

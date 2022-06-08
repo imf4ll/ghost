@@ -1,23 +1,21 @@
+
 package modes
 
-import (
-    "github.com/go-vgo/robotgo"
-    "github.com/z3oxs/ghost/utils"
-)
+import "github.com/z3oxs/ghost/utils"
 
 func Fullscreen(save, format string, clipboard, output, upload bool) {
-    screenshot := robotgo.CaptureImg()
+    screenshot := utils.CaptureScreen(save)
 
-    utils.PlaySound("/opt/ghost/screenshot.wav")
+    utils.PlaySound("screenshot.wav")
+	
+    if utils.CheckSave(save) {
+       utils.SaveImage(screenshot, save) 
+
+    }
 
     if clipboard {
         utils.SaveToClipboard(screenshot)
     
-    }
-
-    if save != "" {
-        robotgo.Save(screenshot, save)
-
     }
 
     if output {
@@ -30,3 +28,4 @@ func Fullscreen(save, format string, clipboard, output, upload bool) {
 
     }
 }
+
