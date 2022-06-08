@@ -6,7 +6,7 @@ import (
     "github.com/z3oxs/ghost/utils"
 )
 
-func Display(save, format string, clipboard, output, upload bool, display int) {
+func Display(save string, clipboard, output, upload bool, display int) {
     displays := utils.GetDisplays()
 
     if display > len(displays) {
@@ -37,12 +37,12 @@ func Display(save, format string, clipboard, output, upload bool, display int) {
     }
 
     if output {
-        utils.OutputToStdout(screenshot, format)
+        utils.OutputToStdout(screenshot)
 
     }
 
     if upload {
-        utils.UploadImage(screenshot, format)
+        utils.UploadImage(screenshot)
 
     }
 }
