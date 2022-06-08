@@ -13,21 +13,19 @@ import (
     "log"
     "image"
     "image/png"
-    "os/exec"
-    "strings"
     "bytes"
 )
 
 func SaveToClipboard(screenshot image.Image) {
-    var image = new(bytes.Buffer)
+    var img = new(bytes.Buffer)
 
-    err = png.Encode(image, screenshot)
+    err := png.Encode(img, screenshot)
     if err != nil {
         log.Fatal(err)
 
     }
 
-    imageToCString := C.CString(image.String())
+    imageToCString := C.CString(img.String())
 
     C.setClipboard(imageToCString)
 }

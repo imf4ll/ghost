@@ -8,15 +8,15 @@ import (
     "os"
 )
 
-func OutputToStdout(image image.Image, format string) {
+func OutputToStdout(screenshot image.Image, format string) {
     var err error
-
+    
     switch format {
         case "png":
-            err = png.Encode(os.Stdout, image)
+            err = png.Encode(os.Stdout, screenshot)
 
         case "jpg":
-            err = jpeg.Encode(os.Stdout, image, &jpeg.Options {
+            err = jpeg.Encode(os.Stdout, screenshot, &jpeg.Options {
                 Quality: 100,
             })
     }

@@ -3,6 +3,7 @@ package utils
 import (
     "os"
     "log"
+    "fmt"
     "time"
     "runtime"
 
@@ -12,13 +13,15 @@ import (
 )
 
 func PlaySound(sound string) {
-    if runtime.GOOS == "windows" { return }
+    var file * os.File
 
     done := make(chan bool)
 
-    file, err := os.Open(sound)
-    if err != nil {
-        log.Fatal(err)
+    if runtime.GOOS == "windows" {
+        file, _ = os.Open(fmt.Sprintf("%s\\AppData\\Roaming\\ghost\\%s", os.Getenv("HOME"), sound))
+    
+    } else if runtime.GOOS == "linux" {
+        file, _ = os.Open(fmt.Sprintf("/opt/ghost/%s", sound))
 
     }
 
