@@ -15,7 +15,7 @@ func CheckSave(save string) bool {
             }
 
         case "windows":
-            if save == fmt.Sprintf("%s\\AppData\\Local\\Temp\\screenshot.png", os.Getenv("HOME")) {
+            if save == fmt.Sprintf("%s\\AppData\\Local\\Temp\\screenshot.png", os.Getenv("USERPROFILE")) {
                 return true
 
             }

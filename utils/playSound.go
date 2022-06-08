@@ -18,7 +18,7 @@ func PlaySound(sound string) {
     done := make(chan bool)
 
     if runtime.GOOS == "windows" {
-        file, _ = os.Open(fmt.Sprintf("%s\\AppData\\Roaming\\ghost\\%s", os.Getenv("HOME"), sound))
+        file, _ = os.Open(fmt.Sprintf("%s\\AppData\\Roaming\\ghost\\%s", os.Getenv("USERPROFILE"), sound))
     
     } else if runtime.GOOS == "linux" {
         file, _ = os.Open(fmt.Sprintf("/opt/ghost/%s", sound))

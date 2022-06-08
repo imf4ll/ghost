@@ -51,5 +51,10 @@ ghost -f -o
 ### Install (Will need 'make'):<br>
 #### Windows:<br>
 `sudo make install-win`<br><br>
+
+**If you face any problem:**
+- Create the directory manually: `mkdir C:\Users\<USER>\AppData\Roaming\ghost`
+- Copy the sounds to the created directory: `cp .\sounds\* C:\Users\<USER>\AppData\Roaming\ghost\`
+
 #### Linux:<br>
 `sudo make install-linux`<br><br>
