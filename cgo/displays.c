@@ -47,7 +47,7 @@ static struct DisplayInfo displayInfos[10];
 #endif
 
 #if defined (WINDOWS)
-    #include <winuser.h>
+    #include <windows.h>
 
     int turns = 0;
 
