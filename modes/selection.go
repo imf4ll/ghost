@@ -45,12 +45,8 @@ func Selection(save string, clipboard, output, upload bool) {
 
     }
 
-    utils.PlaySound("screenshot.wav")
-
-    if utils.CheckSave(save) {
-       utils.SaveImage(screenshot, save)
-
-    }
+    utils.PlaySound()
+    utils.SaveImage(screenshot, save)
 
     if clipboard {
         utils.SaveToClipboard(screenshot)
