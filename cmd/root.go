@@ -59,7 +59,16 @@ func init() {
 
     switch runtime.GOOS {
         case "linux": save = "/tmp/screenshot.png"
-        case "windows": save = fmt.Sprintf("%s\\AppData\\Local\\Temp\\screenshot.png", os.Getenv("HOME"))
+
+        case "windows": 
+            if os.Getenv("USERPROFILE") != "" {
+                save = fmt.Sprintf("%s\\AppData\\Local\\Temp\\screenshot.png", os.Getenv("USERPROFILE"))
+            
+            } else {
+                save = fmt.Sprintf("%s\\AppData\\Local\\Temp\\screenshot.png", os.Getenv("HOME"))
+
+            }
+
         case "darwin": panic("Darwin not yet implemented.")
     }
 
