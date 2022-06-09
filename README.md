@@ -48,13 +48,8 @@ ghost -f -o
 `git clone https://github.com/z3oxs/ghost` or Download ZIP and unzip;<br><br>
 ### Move to repository:<br>
 `cd ghost`<br><br>
-### Install (Will need 'make'):<br>
+### Install (Will need 'make' or download prebuilt binaries on releases page):<br>
 #### Windows:<br>
 `sudo make install-win`<br><br>
-
-**If you face any problem:**
-- Create the directory manually: `mkdir C:\Users\<USER>\AppData\Roaming\ghost`
-- Copy the sounds to the created directory: `cp .\sounds\* C:\Users\<USER>\AppData\Roaming\ghost\`
-
 #### Linux:<br>
 `sudo make install-linux`<br><br>
