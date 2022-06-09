@@ -25,7 +25,7 @@ var rootCmd = cobra.Command {
         version, _ := c.Flags().GetBool("version")
 
         if version {
-            fmt.Println("v1.0.7 - Stable")
+            fmt.Println("v1.0.8 - Stable")
 
             os.Exit(3)
         }
