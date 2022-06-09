@@ -10,7 +10,7 @@
     #include <windows.h>
     #include <mmsystem.h>
 
-    void Play() {
+    void play() {
         PlaySound((LPCSTR)SND_ALIAS_SYSTEMEXCLAMATION, NULL, SND_ALIAS_ID);
 
     }

@@ -10,6 +10,6 @@ package utils
 import "C"
 
 func PlaySound() {
-    C.Play()
+    C.play()
 
 }
