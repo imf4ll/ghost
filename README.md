@@ -3,7 +3,7 @@
     <h3>A simple tool to take screenshots using your terminal</h3>
 </div>
 
-&nbps;
+&nbsp;
 ## ❗️ Install:
 Arch based:
 ```bash
@@ -17,6 +17,7 @@ OR with a AUR Helper:
 yay -S ghost-git
 ```
 
+&nbsp;
 Others:
 ```bash
 git clone https://github.com/z3oxs/ghost.git
