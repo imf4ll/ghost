@@ -27,7 +27,7 @@ sudo make install
 
 &nbsp;
 ## 🚀 Usage:
-**If you want to use the properly builded script, check <a href="#setup">setup</a>**
+**If you want to use the properly builded script, check <a href="https://github.com/z3oxs/ghost/releases">releases page</a>**
 
 | Command    |     Description    |
 | ------------- | ------------------ |
