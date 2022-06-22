@@ -1,8 +1,7 @@
-install-linux:
+GOPATH := $(shell go env GOPATH)
+
+install:
 	go install
 
 uninstall-linux:
-	rm -rf ~/go/bin/ghost
-
-install-win:
-	go install
+	rm -i ${GOPATH}/bin/ghost
