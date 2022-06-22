@@ -17,7 +17,7 @@ OR with a AUR Helper:
 yay -S ghost-git
 ```
 
-&nbsp;
+<br><br>
 Others:
 ```bash
 git clone https://github.com/z3oxs/ghost.git
