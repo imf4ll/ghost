@@ -9,6 +9,7 @@ package utils
 #include "../cgo/displays.c"
 */
 import "C"
+
 import "unsafe"
 
 type Display struct {
