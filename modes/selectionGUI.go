@@ -1,19 +1,17 @@
 package modes
 
 import (
-    "sync"
     "image"
+    "sync"
 
     "fyne.io/fyne/v2"
     "fyne.io/fyne/v2/app"
     "fyne.io/fyne/v2/canvas"
-    "github.com/go-vgo/robotgo"
     "github.com/z3oxs/ghost/chans"
     "github.com/z3oxs/ghost/utils"
 )
 
 func SelectionGUI(save string, clipboard, output, upload bool) {
-    var x1, x2, y1, y2 int
     var selectedDisplay int
     var multipleDisplay bool
     var screenshot image.Image
@@ -34,11 +32,12 @@ func SelectionGUI(save string, clipboard, output, upload bool) {
         multipleDisplay = true
         
         for _, display := range displays {
-            displayScreenshot := robotgo.CaptureImg (
+            displayScreenshot := utils.CaptureRect (
                 display.X,
                 display.Y,
                 display.Width,
                 display.Height,
+                save,
             )
 
             image := canvas.NewRasterFromImage(displayScreenshot)
@@ -58,7 +57,7 @@ func SelectionGUI(save string, clipboard, output, upload bool) {
         window.SetContent(screenshots[selectedDisplay])
     
     } else {
-        image := canvas.NewRasterFromImage(robotgo.CaptureImg())
+        image := canvas.NewRasterFromImage(utils.CaptureScreen(save))
 
         go chans.KeyEvents(event)
 
@@ -73,39 +72,26 @@ func SelectionGUI(save string, clipboard, output, upload bool) {
 
     go func() {
         wg.Add(1)
-
         defer wg.Done()
 
         for {
-            mouseFirstClick := robotgo.AddMouse("left")
+            m := utils.GetMouse()
 
-            if mouseFirstClick {
-                x1, y1 = robotgo.GetMousePos()
-
-            }
-
-            mouseLastClick := robotgo.AddMouse("left")
-
-            if mouseLastClick {
-                x2, y2 = robotgo.GetMousePos()
-
-            } 
-
-            if x1 < x2 {
+            if m.X1 < m.X2 {
                 screenshot = utils.CaptureRect (
-                    x1,
-                    y1,
-                    x2 - x1,
-                    y2 - y1,
+                    m.X1,
+                    m.Y1,
+                    m.X2 - m.X1,
+                    m.Y2 - m.Y1,
                     save,
                 )
 
             } else {
                 screenshot = utils.CaptureRect (
-                    x2,
-                    y2,
-                    x1 - x2,
-                    y1 - y2,
+                    m.X2,
+                    m.Y2,
+                    m.X1 - m.X2,
+                    m.Y1 - m.Y2,
                     save,
                 )
 
@@ -115,7 +101,7 @@ func SelectionGUI(save string, clipboard, output, upload bool) {
         }
 
         utils.PlaySound()
-        utils.SaveImage(screenshot, save) 
+        utils.SaveImage(screenshot, save)
 
         if clipboard {
             utils.SaveToClipboard(screenshot)
