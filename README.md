@@ -22,7 +22,7 @@ Others:
 ```bash
 git clone https://github.com/z3oxs/ghost.git
 cd ghost
-sudo make install
+make install
 ```
 
 &nbsp;
