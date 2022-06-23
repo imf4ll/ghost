@@ -3,5 +3,5 @@ GOPATH := $(shell go env GOPATH)
 install:
 	go install
 
-uninstall-linux:
+uninstall:
 	rm -i ${GOPATH}/bin/ghost

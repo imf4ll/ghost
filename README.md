@@ -43,6 +43,7 @@ make install
 | g | Take screenshot from a selected area freezed and support multiple displays |
 | d | Take screenshot from only a display |
 | S | Save the output to a image file |
+| F | Save to file on default images path |
 | c | Copy the output to the clipboard |
 | o | Outputs screenshot to stdout encoded as png |
 | u | Upload the screenshot to AnonFiles |
