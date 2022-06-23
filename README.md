@@ -1,7 +1,11 @@
 <div align="center">
     <img src="./assets/logo.png" width="150" />
-    <h3>A simple tool to take screenshots using your terminal</h3>
+    <h3>A tool to take screenshots using your Linux terminal</h3>
 </div>
+
+<br><br>
+## ANNOUNCEMENT:
+**I've decided to shutdown Windows compatibility, reason is, this tool is terminal friendly and Windows users usually don't, other user friendly tools are used, like the Windows 10 builtin "Win + Shift + S" command. The linux support will continue and I want to embrace Unix like OSs, hope you all understand me.**
 
 &nbsp;
 ## ❗️ Install:
@@ -29,6 +33,9 @@ make install
 ## 🚀 Usage:
 **If you want to use the properly builded script, check <a href="https://github.com/z3oxs/ghost/releases">releases page</a>**
 
+&nbsp;
+<div align="center">
+    
 | Command    |     Description    |
 | ------------- | ------------------ |
 | f |  Take fullscreen shot (include all monitors) |
@@ -40,6 +47,8 @@ make install
 | o | Outputs screenshot to stdout encoded as png |
 | u | Upload the screenshot to AnonFiles |
 | v | Show version |
+    
+</div>
 
 &nbsp;
 ### Example
@@ -55,10 +64,3 @@ ghost -s -c
 ```bash
 ghost -f -o
 ```
-
-<br><br>
-## ❌ Troubleshooting:
-- If you're facing any "cc1.exe" error including "64-bit not implemented" (Windows):
-    - Download [mingw-w64](https://sourceforge.net/projects/mingw-w64/files/Toolchains%20targetting%20Win64/Personal%20Builds/mingw-builds/8.1.0/threads-posix/seh/x86_64-8.1.0-release-posix-seh-rt_v6-rev0.7z)
-    - Extract and copy "mingw64" to "C:\"
-    - Define or create "PATH" enviroment variable containing "C:\\mingw64\\bin\\"

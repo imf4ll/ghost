@@ -2,7 +2,6 @@ package main
 
 import (
     "flag"
-    "runtime"
     "os"
     "fmt"
     "log"
@@ -23,22 +22,7 @@ var (
 )
 
 func init() {
-    var saveString string
-
-    switch runtime.GOOS {
-        case "linux": saveString = "/tmp/screenshot.png"
-
-        case "windows":
-            if os.Getenv("USERPROFILE") != "" {
-                saveString = fmt.Sprintf("%s\\AppData\\Local\\Temp\\screenshot.png", os.Getenv("USERPROFILE"))
-            
-            } else {
-                saveString = fmt.Sprintf("%s\\AppData\\Local\\Temp\\screenshot.png", os.Getenv("HOME"))
-
-            }
-
-        case "darwin": panic("Not yet implemented.")
-    } 
+    saveString := "/tmp/screenshot.png"
 
     flag.BoolVar(&fullscreen, "f", false, "Fullscreen mode")
     flag.BoolVar(&selection, "s", false, "Selection mode")
@@ -75,7 +59,7 @@ Flags:
 
 func main() {
     if version {
-        fmt.Println("\nCurrent version:\n    v1.0.9")
+        fmt.Println("\nCurrent version:\n    v1.0.9.1")
 
         os.Exit(3)
     }

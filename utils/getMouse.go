@@ -1,7 +1,5 @@
 package utils
 
-// go:build linux
-
 /*
 #cgo LDFLAGS: -lX11
 

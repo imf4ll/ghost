@@ -1,9 +1,6 @@
 package utils
 
-// go:build linux
-
 /*
-#cgo CFLAGS: -Wall
 #cgo LDFLAGS: -lXrandr -lX11
 
 #include "../cgo/displays.c"

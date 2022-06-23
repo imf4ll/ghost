@@ -31,7 +31,6 @@ func Selection(save string, clipboard, output, upload bool) {
 
     }
 
-    utils.PlaySound()
     utils.SaveImage(screenshot, save)
 
     if clipboard {

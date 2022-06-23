@@ -24,7 +24,6 @@ func Display(save string, clipboard, output, upload bool, display int) {
         save,
     )
 
-    utils.PlaySound()
     utils.SaveImage(screenshot, save) 
 
     if clipboard {

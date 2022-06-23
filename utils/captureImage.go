@@ -1,13 +1,9 @@
 package utils
 
-// go:build linux
-
 /*
-#cgo CFLAGS: -Wall
 #cgo LDFLAGS: -lX11 -lcairo
 
 #include "../cgo/screenshot.c"
-#include <cairo/cairo.h>
 */
 import "C"
 
@@ -16,8 +12,6 @@ import (
     "image"
     "log"
 )
-
-type CaptureType = C.cairo_surface_t
 
 func CaptureScreen(filename string) image.Image {
     cFilename := C.CString(filename)

@@ -1,14 +1,10 @@
 package utils
 
-// go:build linux && !cgo
-
 import (
     "log"
     "image"
     "os/exec"
     "strings"
-
-    "github.com/go-vgo/robotgo"
 )
 
 func SaveToClipboard(screenshot image.Image) {
@@ -23,7 +19,7 @@ func SaveToClipboard(screenshot image.Image) {
 
     }
 
-    robotgo.Save(screenshot, "/tmp/screenshot.png")
+    SaveImage(screenshot, "/tmp/screenshot")
 
     cmd := exec.Command("xclip", "-sel", "clipboard", "-t", "image/png", "-i", "/tmp/screenshot.png")
 

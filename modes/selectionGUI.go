@@ -100,7 +100,6 @@ func SelectionGUI(save string, clipboard, output, upload bool) {
             break
         }
 
-        utils.PlaySound()
         utils.SaveImage(screenshot, save)
 
         if clipboard {
