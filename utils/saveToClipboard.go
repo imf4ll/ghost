@@ -19,8 +19,6 @@ func SaveToClipboard(screenshot image.Image) {
 
     }
 
-    SaveImage(screenshot, "/tmp/screenshot")
-
     cmd := exec.Command("xclip", "-sel", "clipboard", "-t", "image/png", "-i", "/tmp/screenshot.png")
 
     if err := cmd.Run(); err != nil {
