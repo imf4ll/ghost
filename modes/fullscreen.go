@@ -2,10 +2,8 @@ package modes
 
 import "github.com/z3oxs/ghost/utils"
 
-func Fullscreen(save string, clipboard, output, upload bool) {
+func Fullscreen(save string, clipboard, output, upload, file bool) {
     screenshot := utils.CaptureScreen(save)
-
-    utils.SaveImage(screenshot, save) 
 
     if clipboard {
         utils.SaveToClipboard(screenshot)
@@ -19,6 +17,11 @@ func Fullscreen(save string, clipboard, output, upload bool) {
 
     if upload {
         utils.UploadImage(screenshot)
+
+    }
+
+    if file {
+        utils.SaveImage(screenshot)
 
     }
 }

@@ -11,7 +11,7 @@ import (
     "github.com/z3oxs/ghost/utils"
 )
 
-func SelectionGUI(save string, clipboard, output, upload bool) {
+func SelectionGUI(save string, clipboard, output, upload, file bool) {
     var selectedDisplay int
     var multipleDisplay bool
     var screenshot image.Image
@@ -100,8 +100,6 @@ func SelectionGUI(save string, clipboard, output, upload bool) {
             break
         }
 
-        utils.SaveImage(screenshot, save)
-
         if clipboard {
             utils.SaveToClipboard(screenshot)
         
@@ -114,6 +112,11 @@ func SelectionGUI(save string, clipboard, output, upload bool) {
 
         if upload {
             utils.UploadImage(screenshot)
+
+        }
+
+        if file {
+            utils.SaveImage(screenshot)
 
         }
 

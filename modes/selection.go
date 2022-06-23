@@ -6,7 +6,7 @@ import (
     "github.com/z3oxs/ghost/utils"
 )
 
-func Selection(save string, clipboard, output, upload bool) {
+func Selection(save string, clipboard, output, upload, file bool) {
     var screenshot image.Image 
 
     m := utils.GetMouseAndKeyboard()
@@ -31,8 +31,6 @@ func Selection(save string, clipboard, output, upload bool) {
 
     }
 
-    utils.SaveImage(screenshot, save)
-
     if clipboard {
         utils.SaveToClipboard(screenshot)
 
@@ -45,6 +43,11 @@ func Selection(save string, clipboard, output, upload bool) {
 
     if upload {
         utils.UploadImage(screenshot)
+
+    }
+
+    if file {
+        utils.SaveImage(screenshot)
 
     }
 }
