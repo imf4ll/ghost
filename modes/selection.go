@@ -31,23 +31,5 @@ func Selection(save string, clipboard, output, upload, file bool) {
 
     }
 
-    if clipboard {
-        utils.SaveToClipboard(screenshot)
-
-    }
-
-    if output {
-        utils.OutputToStdout(screenshot)
-
-    }
-
-    if upload {
-        utils.UploadImage(screenshot)
-
-    }
-
-    if file {
-        utils.SaveImage(screenshot)
-
-    }
+    utils.SaveHandler(clipboard, output, upload, file, screenshot)
 }
