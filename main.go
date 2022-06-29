@@ -39,7 +39,7 @@ func init() {
     ghost [flags]
 
 Description:
-    Simple tool to take screenshots
+    A tool to take screenshots
 
 Flags:
     -f    Fullscreen mode
@@ -60,7 +60,7 @@ Flags:
 
 func main() {
     if version {
-        fmt.Println("\nCurrent version:\n    v1.1.0")
+        fmt.Println("\nCurrent version:\n    v1.1.1")
 
         os.Exit(3)
     }
