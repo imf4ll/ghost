@@ -60,12 +60,12 @@ Flags:
 
 func main() {
     if version {
-        fmt.Println("\nCurrent version:\n    v1.1.1")
+        fmt.Println("\nCurrent version:\n    v1.1.2")
 
         os.Exit(3)
     }
 
-    if (!clipboard && !file && !output && !upload) {
+    if (!clipboard && !file && save == "" && !output && !upload) {
         log.Fatalln("You need to specify at least a save method, check 'ghost --help'.")
 
     }
