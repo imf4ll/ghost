@@ -12,6 +12,8 @@ import (
     "encoding/json"
     "errors"
     "fmt"
+    "os/exec"
+    "strings"
 )
 
 type Response struct {
@@ -66,11 +68,32 @@ func UploadImage(screenshot image.Image) {
 
     json.Unmarshal(data, &response)
 
-    fmt.Printf("ID: %s\nSize: %s\nURL: %s\n",
-        response.Data.File.Metadata.ID,
+    URL := fmt.Sprintf("https://anonfiles.com/%s", response.Data.File.Metadata.ID)
+
+    fmt.Printf("URL: %s\nSize: %s\n",
+        URL,
         response.Data.File.Metadata.Size.Readable,
-        response.Data.File.URL.Full,
     )
+
+    whereIsXSel, err := exec.Command("which", "xsel").Output()
+    if err != nil {
+        log.Fatal(err)
+
+    }
+    
+    if strings.Contains(string(whereIsXSel), "not found") {
+        log.Fatal("XSel was not found, are you sure that you have installed?")
+
+    }
+
+    cmd := exec.Command("bash", "-c", fmt.Sprintf("echo -n \"%s\" | xsel -bi", URL))
+
+    if err := cmd.Run(); err != nil {
+        log.Fatal(err)
+
+    }
+
+    fmt.Println("\nSaved URL to clipboard.")
 }
 
 func createForm(image io.Reader) (string, io.Reader, error) {
