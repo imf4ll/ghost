@@ -1,4 +1,4 @@
-module github.com/z3oxs/ghost
+module github.com/imf4ll/ghost
 
 go 1.17
 

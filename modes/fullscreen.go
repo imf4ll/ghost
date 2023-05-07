@@ -1,10 +1,13 @@
 package modes
 
-import "github.com/z3oxs/ghost/utils"
+import (
+    "github.com/imf4ll/ghost/save"
+    "github.com/imf4ll/ghost/utils"
+)
 
-func Fullscreen(save string, clipboard, output, upload, file bool) {
-    screenshot := utils.CaptureScreen(save)
+func Fullscreen(filename string, clipboard, output, upload, file bool) {
+    screenshot := utils.CaptureScreen(filename)
 
-    utils.SaveHandler(clipboard, output, upload, file, screenshot)
+    save.SaveHandler(clipboard, output, upload, file, screenshot)
 }
 

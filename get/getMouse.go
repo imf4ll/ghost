@@ -1,4 +1,4 @@
-package utils
+package get
 
 /*
 #cgo LDFLAGS: -lX11

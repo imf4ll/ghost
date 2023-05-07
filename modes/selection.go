@@ -3,13 +3,15 @@ package modes
 import (
     "image"
 
-    "github.com/z3oxs/ghost/utils"
+    "github.com/imf4ll/ghost/get"
+    "github.com/imf4ll/ghost/save"
+    "github.com/imf4ll/ghost/utils"
 )
 
-func Selection(save string, clipboard, output, upload, file bool) {
+func Selection(filename string, clipboard, output, upload, file bool) {
     var screenshot image.Image 
 
-    m := utils.GetMouseAndKeyboard()
+    m := get.GetMouseAndKeyboard()
 
     if m.X1 < m.X2 {
         screenshot = utils.CaptureRect (
@@ -17,7 +19,7 @@ func Selection(save string, clipboard, output, upload, file bool) {
             m.Y1,
             m.X2 - m.X1,
             m.Y2 - m.Y1,
-            save,
+            filename,
         )
 
     } else {
@@ -26,10 +28,10 @@ func Selection(save string, clipboard, output, upload, file bool) {
             m.Y2,
             m.X1 - m.X2,
             m.Y1 - m.Y2,
-            save,
+            filename,
         )
 
     }
 
-    utils.SaveHandler(clipboard, output, upload, file, screenshot)
+    save.SaveHandler(clipboard, output, upload, file, screenshot)
 }

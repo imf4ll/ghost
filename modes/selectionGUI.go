@@ -7,11 +7,14 @@ import (
     "fyne.io/fyne/v2"
     "fyne.io/fyne/v2/app"
     "fyne.io/fyne/v2/canvas"
-    "github.com/z3oxs/ghost/chans"
-    "github.com/z3oxs/ghost/utils"
+
+    "github.com/imf4ll/ghost/chans"
+    "github.com/imf4ll/ghost/get"
+    "github.com/imf4ll/ghost/save"
+    "github.com/imf4ll/ghost/utils"
 )
 
-func SelectionGUI(save string, clipboard, output, upload, file bool) {
+func SelectionGUI(filename string, clipboard, output, upload, file bool) {
     var selectedDisplay int
     var multipleDisplay bool
     var screenshot image.Image
@@ -26,7 +29,7 @@ func SelectionGUI(save string, clipboard, output, upload, file bool) {
     window.SetPadded(false)
     window.SetFullScreen(true)
 
-    displays := utils.GetDisplays()
+    displays := get.GetDisplays()
 
     if len(displays) > 0 {
         multipleDisplay = true
@@ -37,7 +40,7 @@ func SelectionGUI(save string, clipboard, output, upload, file bool) {
                 display.Y,
                 display.Width,
                 display.Height,
-                save,
+                filename,
             )
 
             image := canvas.NewRasterFromImage(displayScreenshot)
@@ -57,7 +60,7 @@ func SelectionGUI(save string, clipboard, output, upload, file bool) {
         window.SetContent(screenshots[selectedDisplay])
     
     } else {
-        image := canvas.NewRasterFromImage(utils.CaptureScreen(save))
+        image := canvas.NewRasterFromImage(utils.CaptureScreen(filename))
 
         go chans.KeyEvents(event)
 
@@ -75,7 +78,7 @@ func SelectionGUI(save string, clipboard, output, upload, file bool) {
         defer wg.Done()
 
         for {
-            m := utils.GetMouse()
+            m := get.GetMouse()
 
             if m.X1 < m.X2 {
                 screenshot = utils.CaptureRect (
@@ -83,7 +86,7 @@ func SelectionGUI(save string, clipboard, output, upload, file bool) {
                     m.Y1,
                     m.X2 - m.X1,
                     m.Y2 - m.Y1,
-                    save,
+                    filename,
                 )
 
             } else {
@@ -92,7 +95,7 @@ func SelectionGUI(save string, clipboard, output, upload, file bool) {
                     m.Y2,
                     m.X1 - m.X2,
                     m.Y1 - m.Y2,
-                    save,
+                    filename,
                 )
 
             }
@@ -100,7 +103,7 @@ func SelectionGUI(save string, clipboard, output, upload, file bool) {
             break
         }
 
-        utils.SaveHandler(clipboard, output, upload, file, screenshot)
+        save.SaveHandler(clipboard, output, upload, file, screenshot)
 
         window.Close()
     }()

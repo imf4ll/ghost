@@ -6,7 +6,7 @@ import (
     "fmt"
     "log"
 
-    "github.com/z3oxs/ghost/modes"
+    "github.com/imf4ll/ghost/modes"
 )
 
 var (
@@ -60,7 +60,7 @@ Flags:
 
 func main() {
     if version {
-        fmt.Println("\nCurrent version:\n    v1.1.2")
+        fmt.Println("\nCurrent version:\n    v1.1.3")
 
         os.Exit(3)
     }

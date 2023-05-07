@@ -3,11 +3,13 @@ package modes
 import (
     "log"
 
-    "github.com/z3oxs/ghost/utils"
+    "github.com/imf4ll/ghost/get"
+    "github.com/imf4ll/ghost/save"
+    "github.com/imf4ll/ghost/utils"
 )
 
-func Display(save string, clipboard, output, upload, file bool, display int) {
-    displays := utils.GetDisplays()
+func Display(filename string, clipboard, output, upload, file bool, display int) {
+    displays := get.GetDisplays()
 
     if display > len(displays) {
         log.Fatal("Invalid screen selected.")
@@ -21,8 +23,8 @@ func Display(save string, clipboard, output, upload, file bool, display int) {
         displaySelected.Y,
         displaySelected.Width,
         displaySelected.Height,
-        save,
+        filename,
     )
 
-    utils.SaveHandler(clipboard, output, upload, file, screenshot)
+    save.SaveHandler(clipboard, output, upload, file, screenshot)
 }

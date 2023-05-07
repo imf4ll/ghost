@@ -1,6 +1,10 @@
-package utils
+package save
 
-import "image"
+import (
+    "image"
+
+    "github.com/imf4ll/ghost/utils"
+)
 
 func SaveHandler(clipboard, output, upload, file bool, screenshot image.Image) {
     if clipboard {
@@ -9,12 +13,12 @@ func SaveHandler(clipboard, output, upload, file bool, screenshot image.Image) {
     }
 
     if output {
-        OutputToStdout(screenshot)
+        utils.OutputToStdout(screenshot)
 
     }
 
     if upload {
-        UploadImage(screenshot)
+        utils.UploadImage(screenshot)
 
     }
 

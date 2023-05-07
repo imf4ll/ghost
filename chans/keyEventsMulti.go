@@ -5,12 +5,12 @@ import (
 
     "fyne.io/fyne/v2"
     "fyne.io/fyne/v2/canvas"
-    "github.com/z3oxs/ghost/utils"
+    "github.com/imf4ll/ghost/types"
 )
 
 func KeyEventsMulti (
     event chan *fyne.KeyEvent, selectedDisplay int,
-    window fyne.Window, screenshots []*canvas.Raster, displays []utils.Display,
+    window fyne.Window, screenshots []*canvas.Raster, displays []types.Display,
 ) {
     for {
         select {

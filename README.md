@@ -4,25 +4,7 @@
 </div>
 
 <br><br>
-## ANNOUNCEMENT:
-**I've decided to shutdown Windows compatibility, reason is, this tool is terminal friendly and Windows users usually don't, other user friendly tools are used, like the Windows 10 builtin "Win + Shift + S" command. The linux support will continue and I want to embrace Unix like OSs, hope you all understand me.**
-
-&nbsp;
 ## ❗️ Install:
-Arch based:
-```bash
-git clone https://aur.archlinux.org/ghost-git.git
-cd ghost-git
-makepkg -si
-```
-
-OR with a AUR Helper:
-```bash
-yay -S ghost-git
-```
-
-<br><br>
-Others:
 ```bash
 git clone https://github.com/z3oxs/ghost.git
 cd ghost
