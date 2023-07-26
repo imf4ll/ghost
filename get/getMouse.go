@@ -1,7 +1,7 @@
 package get
 
 /*
-#cgo LDFLAGS: -lX11
+#cgo LDFLAGS: -lX11 -lcairo
 
 #include "../cgo/mouse.c"
 */
@@ -32,16 +32,16 @@ func GetMouse() MousePosition {
 }
 
 func GetMouseAndKeyboard() MousePosition {
-    var mousePos MousePosition
+    var mousePos MousePosition;
 
-    getMousePos := (*[1 << 1]C.struct_MousePosition)(unsafe.Pointer(C.getMouseAndKeyboard()))[0:1]
+    getMousePos := (*[1 << 1]C.struct_MousePosition)(unsafe.Pointer(C.getMouseAndKeyboard()))[0:1];
 
-    m := getMousePos[0]
+    m := getMousePos[0];
 
-    mousePos.X1 = int(m.x1)
-    mousePos.X2 = int(m.x2)
-    mousePos.Y1 = int(m.y1)
-    mousePos.Y2 = int(m.y2)
+    mousePos.X1 = int(m.x1);
+    mousePos.X2 = int(m.x2);
+    mousePos.Y1 = int(m.y1);
+    mousePos.Y2 = int(m.y2);
 
-    return mousePos
+    return mousePos;
 }

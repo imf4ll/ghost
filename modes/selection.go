@@ -9,9 +9,9 @@ import (
 )
 
 func Selection(filename string, clipboard, output, upload, file bool) {
-    var screenshot image.Image 
+    var screenshot image.Image;
 
-    m := get.GetMouseAndKeyboard()
+    m := get.GetMouseAndKeyboard();
 
     if m.X1 < m.X2 {
         screenshot = utils.CaptureRect (
@@ -20,7 +20,7 @@ func Selection(filename string, clipboard, output, upload, file bool) {
             m.X2 - m.X1,
             m.Y2 - m.Y1,
             filename,
-        )
+        );
 
     } else {
         screenshot = utils.CaptureRect (
@@ -29,9 +29,9 @@ func Selection(filename string, clipboard, output, upload, file bool) {
             m.X1 - m.X2,
             m.Y1 - m.Y2,
             filename,
-        )
+        );
 
     }
 
-    save.SaveHandler(clipboard, output, upload, file, screenshot)
+    save.SaveHandler(clipboard, output, upload, file, screenshot);
 }

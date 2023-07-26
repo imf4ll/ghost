@@ -1,6 +1,6 @@
 module github.com/imf4ll/ghost
 
-go 1.17
+go 1.19
 
 require fyne.io/fyne/v2 v2.1.4
 
